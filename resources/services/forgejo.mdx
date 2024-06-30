@@ -14,16 +14,16 @@ Forgejo is a self-hosted lightweight software forge. Easy to install and low mai
 
 ## Forejo Actions
 
-Forgejo has available an self-maintained "runner" that [execute actions on a repository](https://forgejo.org/docs/latest/user/actions/), much like [GitHub Actions](https://docs.github.com/en/actions) or [GitLab CI](https://docs.gitlab.com/ee/ci/index.html).
+Forgejo has available a first party "actions runner" to [execute task jobs on a repository](https://forgejo.org/docs/latest/user/actions/), much like [GitHub Actions](https://docs.github.com/en/actions) or [GitLab CI](https://docs.gitlab.com/ee/ci/index.html).
 
-Coolify includes Forgejo services with a single runner, using [Docker-in-Docker](https://hub.docker.com/_/docker) to enable the runner to run and report task jobs.
+Coolify includes Forgejo services with a single runner, using [Docker-in-Docker](https://hub.docker.com/_/docker) to handle and report task jobs.
 
 Due to the alpha status of the Forgejo runner, there is two additional steps: adding a shared secret and rebooting the Forejo service.
 
-1. In the **Environment Variables** section of the service configuration, set as `RUNNER_SHARED_SECRET` a 40-character hexagesimal string. You may use `0000000000000000000000000000000000000000` or execute `openssl rand -hex 20` to get a random string.
-2. After sucessfully setting up Forejo, **reboot the `forgejo` service** and wait some seconds until the runner appears.
+1. In the **Environment Variables** section of the service configuration, you may set as `RUNNER_SHARED_SECRET` a random 40-character hexagesimal string. The command `openssl rand -hex 20` creates something you can copy and paste.
+2. After sucessfully setting up Forejo, **reboot the `forgejo` service** and wait some seconds until the runner appears in Forgejo _ACtions_ Configuration section.
 
-Forejo is also compatible with third-party runners by registering them as Applications.
+Forejo is also compatible with third-party CI apps and platforms. As Forgejo is a Gitea-fork, so instructions may be the same for both.
 
 ## Demo
 
